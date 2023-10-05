@@ -72,6 +72,11 @@ function getSavedData() {
     // get adn parse local storage data
     let retrieved = JSON.parse(localStorage.getItem("scheduleForWeek"));
 
+    if(retrieved == null){
+        // if null set empty
+        retrieved = [];
+    }
+
     //console.log(retrieved);
 
     // iterate divs 
