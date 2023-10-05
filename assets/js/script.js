@@ -169,7 +169,20 @@ function displayTime() {
 
 // func to am to pm 
 function rolloverTimes(num, hours) {
-
+    // if time less than 10
+    if (num < 10) {
+        // morning time
+        postFix = "AM"
+        return "0" + num;
+    } else {
+        if (hours) {
+            // evening time
+            postFix = "PM"
+            // update var for visibility
+            return num - 12;
+        }
+        return num;
+    }
 }
 
 
