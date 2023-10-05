@@ -175,7 +175,16 @@ function rolloverTimes(num, hours) {
 
 // func to initalize app
 function init() {
+    // reset class stylings
+    $(loadingHour).removeClass("past");
+    $(loadingHour).removeClass("present");
+    $(loadingHour).removeClass("future");
 
+    // add class styles based on curr hour
+    updateHour();
+
+    // load saved data
+    getSavedData();
 }
 
 // func to get postfix 
