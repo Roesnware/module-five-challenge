@@ -7,10 +7,21 @@ const day = dayjs().format("D")
 const loadingHour = Array.from(document.querySelectorAll(".time-block"));
 
 // global var
+var hours, minutes, seconds;
+var dayText, month, dayNum;
 
-// on start up funcg
+let hour = 0;
+let text = "";
+
+// global arr
+let schedule = [];
+
+// on start up func
 $(function () {
-
+// display time 
+// init func 
+// button 
+// interval to update
 });
 
 // func to update hour every 15 min 
