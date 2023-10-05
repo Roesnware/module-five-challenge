@@ -19,7 +19,7 @@ let schedule = [];
 // on start up func
 $(function () {
 
-    // console.log("hi we started");
+    console.log("hi we started");
 
     // display time 
     displayTime();
@@ -54,7 +54,7 @@ function setSavedData() {
 
 // func to display curr time 
 function displayTime() {
-    //console.log("hi we made it here");
+    console.log("hi we made it here");
     // var for running time
     let date = new Date();
 
@@ -67,13 +67,13 @@ function displayTime() {
 
     date = month + "/" + dayNum;
 
-    //console.log(date);
+    console.log(date);
     // set current Day Month and Date
     currDay.innerText = dayjs().format("dddd, MMMM D");
 
     // call postfix to add appropriate ending
     postfixDay();
-    // currTime.innerText = hours + ":" + minutes + ":" + seconds + postFix;
+    currTime.innerText = hours + ":" + minutes + ":" + seconds + postFix;
 }
 
 // func to am to pm 
