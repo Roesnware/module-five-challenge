@@ -50,6 +50,53 @@ function getSavedData() {
 // func to save new data to storage
 function setSavedData() {
 
+    // pull and parse stored data
+    let retrieved = JSON.parse(localStorage.getItem("scheduleForWeek"));
+
+    console.log(retrieved);
+
+    // declare target buttons parent to see divs
+    let dataParent = $(this).parent();
+
+    // text hook 
+    let data = dataParent.children("textarea").val();
+    console.log(data);
+
+    // id hook
+    let id = dataParent.attr("id");
+    console.log(id);
+
+    // object declaration with id and data 
+    var hourlySchedule = {
+        id: id,
+        data: data
+    };
+
+    console.log(retrieved);
+
+    // check if stored data is null
+    if(retrieved == null){
+        // if null set empty
+        retrieved = [];
+    }
+
+    // iterate stored data
+    retrieved.forEach(element => {
+        // check if ids match  with new input id
+        if(element == id){
+            // if so then splice old out of stored data
+            retrieved.splice(i, 1);
+        }
+    });
+
+    console.log(hourlySchedule);
+    // push input to store 
+    schedule.push(hourlySchedule);
+
+    console.log(schedule);
+
+    // store data in local storage
+    localStorage.setItem("scheduleForWeek", JSON.stringify(schedule));
 }
 
 // func to display curr time 
