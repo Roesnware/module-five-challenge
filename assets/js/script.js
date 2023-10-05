@@ -18,10 +18,23 @@ let schedule = [];
 
 // on start up func
 $(function () {
-// display time 
-// init func 
-// button 
-// interval to update
+
+    // console.log("hi we started");
+
+    // display time 
+    displayTime();
+
+    // init func 
+    init();
+
+
+    // button 
+    $(".saveBtn").on("click", setSavedData);
+
+    // interval to update 
+    setInterval(function () {
+        displayTime();
+    }, 1000);
 });
 
 // func to update hour every 15 min 
