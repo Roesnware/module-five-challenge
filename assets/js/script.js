@@ -151,6 +151,8 @@ function setSavedData() {
 
     // store data in local storage
     localStorage.setItem("scheduleForWeek", JSON.stringify(schedule));
+
+    getSavedData();
 }
 
 // func to display curr time 
