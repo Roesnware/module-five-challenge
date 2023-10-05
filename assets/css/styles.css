@@ -11,6 +11,11 @@ body {
     border-left: 1px solid black;
     padding: 10px;
   }
+
+ #hero {
+    padding-bottom: 0rem;
+    border-bottom: 1.0rem solid #000000;
+  }
   
   .description {
     white-space: pre-wrap;
