@@ -39,7 +39,27 @@ $(function () {
 
 // func to update hour every 15 min 
 function updateHour() {
-
+    // for comparing
+    var currHour = dayjs().format("HH");
+    
+    // iterate divs
+    for(let i = 9; i <= 17; i++){
+        // see if curr hour is over div id
+            // add past 
+        // see if equal 
+            // add present
+        // otherwise in future
+        if(currHour > i) {
+            $(`#${i}`).addClass("past");
+            console.log("past");
+        } else if (currHour == i) {
+            $(`#${i}`).addClass("present");
+            console.log("present");
+        } else {
+            $(`#${i}`).addClass("future");
+            console.log("future");
+        }
+    }
 }
 
 // func to get stored data
