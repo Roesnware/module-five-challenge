@@ -1,4 +1,8 @@
-
+/*
+Office Hours Todo:
+    - local storage bug
+    - update every 15 min?
+*/
 
 // hooks
 const currTime = document.getElementById("current-time");
@@ -19,7 +23,7 @@ let schedule = [];
 // on start up func
 $(function () {
 
-    console.log("hi we started");
+    // console.log("hi we started");
 
     // display time 
     displayTime();
@@ -51,13 +55,13 @@ function updateHour() {
         // otherwise in future
         if(currHour > i) {
             $(`#${i}`).addClass("past");
-            console.log("past");
+            //console.log("past");
         } else if (currHour == i) {
             $(`#${i}`).addClass("present");
-            console.log("present");
+            //console.log("present");
         } else {
             $(`#${i}`).addClass("future");
-            console.log("future");
+            //console.log("future");
         }
     }
 }
@@ -68,7 +72,7 @@ function getSavedData() {
     // get adn parse local storage data
     let retrieved = JSON.parse(localStorage.getItem("scheduleForWeek"));
 
-    console.log(retrieved);
+    //console.log(retrieved);
 
     // iterate divs 
     loadingHour.forEach(element => {
@@ -97,18 +101,18 @@ function setSavedData() {
     // pull and parse stored data
     let retrieved = JSON.parse(localStorage.getItem("scheduleForWeek"));
 
-    console.log(retrieved);
+    // console.log(retrieved);
 
     // declare target buttons parent to see divs
     let dataParent = $(this).parent();
 
     // text hook 
     let data = dataParent.children("textarea").val();
-    console.log(data);
+    // console.log(data);
 
     // id hook
     let id = dataParent.attr("id");
-    console.log(id);
+    // console.log(id);
 
     // object declaration with id and data 
     var hourlySchedule = {
@@ -116,7 +120,7 @@ function setSavedData() {
         data: data
     };
 
-    console.log(retrieved);
+    // console.log(retrieved);
 
     // check if stored data is null
     if(retrieved == null){
@@ -133,11 +137,11 @@ function setSavedData() {
         }
     });
 
-    console.log(hourlySchedule);
+    //console.log(hourlySchedule);
     // push input to store 
     schedule.push(hourlySchedule);
 
-    console.log(schedule);
+    //console.log(schedule);
 
     // store data in local storage
     localStorage.setItem("scheduleForWeek", JSON.stringify(schedule));
@@ -145,7 +149,7 @@ function setSavedData() {
 
 // func to display curr time 
 function displayTime() {
-    console.log("hi we made it here");
+    //console.log("hi we made it here");
     // var for running time
     let date = new Date();
 
@@ -158,13 +162,13 @@ function displayTime() {
 
     date = month + "/" + dayNum;
 
-    console.log(date);
+    //console.log(date);
     // set current Day Month and Date
     currDay.innerText = dayjs().format("dddd, MMMM D");
 
     // call postfix to add appropriate ending
     postfixDay();
-    currTime.innerText = hours + ":" + minutes + ":" + seconds + postFix;
+    // currTime.innerText = hours + ":" + minutes + ":" + seconds + postFix;
 }
 
 // func to am to pm 
