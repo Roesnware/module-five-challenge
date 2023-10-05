@@ -1,6 +1,10 @@
 
 
 // hooks
+const currTime = document.getElementById("current-time");
+const currDay = document.getElementById("current-day");
+const day = dayjs().format("D")
+const loadingHour = Array.from(document.querySelectorAll(".time-block"));
 
 // global var
 
