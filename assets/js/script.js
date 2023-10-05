@@ -45,6 +45,30 @@ function updateHour() {
 // func to get stored data
 function getSavedData() {
 
+    // get adn parse local storage data
+    let retrieved = JSON.parse(localStorage.getItem("scheduleForWeek"));
+
+    console.log(retrieved);
+
+    // iterate divs 
+    loadingHour.forEach(element => {
+
+        // empty string
+        var returnedData = "";
+
+        // iterate stored data
+        retrieved.forEach(e => {
+
+            // conditional if div id matches stored data
+            if(element.id == e.id){
+
+                // set string to stored data
+                returnedData = e.data;
+            }
+        }) 
+        // set stored data to screen 
+        $(element).children("textarea").text(returnedData);
+    });
 }
 
 // func to save new data to storage
