@@ -74,7 +74,7 @@ function getSavedData() {
 
     if(retrieved == null){
         // if null set empty
-        retrieved = [];
+        retrieved = "";
     }
 
     //console.log(retrieved);
