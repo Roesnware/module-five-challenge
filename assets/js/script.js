@@ -7,7 +7,7 @@ Office Hours Todo:
 // hooks
 const currTime = document.getElementById("current-time");
 const currDay = document.getElementById("current-day");
-const day = dayjs().format("D")
+const day = dayjs().format("D");
 const loadingHour = Array.from(document.querySelectorAll(".time-block"));
 
 // global var
@@ -112,13 +112,14 @@ function setSavedData() {
 
     // id hook
     let id = dataParent.attr("id");
-    // console.log(id);
+    //console.log(id);
 
     // object declaration with id and data 
     var hourlySchedule = {
         id: id,
         data: data
     };
+
 
     // console.log(retrieved);
 
@@ -127,15 +128,20 @@ function setSavedData() {
         // if null set empty
         retrieved = [];
     }
+    // console.log(newArr);
 
-    // iterate stored data
-    retrieved.forEach(element => {
-        // check if ids match  with new input id
-        if(element == id){
-            // if so then splice old out of stored data
-            retrieved.splice(i, 1);
+    let schedule = retrieved.map(element => {
+        // console.log(id);
+        // console.log(element.id);
+        if(element.id == id) {
+            return hourlySchedule;
+        } else{
+            return element;
         }
+        
+        // check if ids match  with new input id
     });
+    
 
     //console.log(hourlySchedule);
     // push input to store 

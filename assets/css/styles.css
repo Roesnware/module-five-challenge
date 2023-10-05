@@ -18,6 +18,10 @@ textarea {
   white-space: pre-wrap;
 }
 
+.text-center {
+  text-align: center;
+}
+
 .time-block {
   border-radius: 15px;
 }
