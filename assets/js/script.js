@@ -54,7 +54,26 @@ function setSavedData() {
 
 // func to display curr time 
 function displayTime() {
+    //console.log("hi we made it here");
+    // var for running time
+    let date = new Date();
 
+    dayNum = date.getDay() + 1;
+    month = date.getMonth() + 1;
+
+    hours = rolloverTimes(date.getHours(), true);
+    minutes = rolloverTimes(date.getMinutes());
+    seconds = rolloverTimes(date.getSeconds());
+
+    date = month + "/" + dayNum;
+
+    //console.log(date);
+    // set current Day Month and Date
+    currDay.innerText = dayjs().format("dddd, MMMM D");
+
+    // call postfix to add appropriate ending
+    postfixDay();
+    // currTime.innerText = hours + ":" + minutes + ":" + seconds + postFix;
 }
 
 // func to am to pm 
