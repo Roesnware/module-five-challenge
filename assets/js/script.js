@@ -189,5 +189,18 @@ function init() {
 
 // func to get postfix 
 function postfixDay(day){
-
+    // modulus to get remainder 
+    // check for 1s etc..
+    if((day % 10) == 1) {
+        currDay.innerText += "st";
+        // add st at end
+    } else if((day % 10) == 2) {
+        currDay.innerText += "nd";
+        // add nd at end
+    } else if ((day % 10) == 3) {
+        currDay.innerText += "rd";
+        // add rd at end
+    } else {
+        currDay.innerText += "th";
+    }
 }
