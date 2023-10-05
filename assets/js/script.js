@@ -213,6 +213,7 @@ function init() {
     // add class styles based on curr hour
     updateHour();
 
+    setSavedData();
     // load saved data
     getSavedData();
 }
