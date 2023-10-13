@@ -111,6 +111,7 @@ function rolloverTimes(num, hours) {
 // func to initalize app
 function init() {
 
+    localStorage.clear();
     // reset class stylings
     $(loadingHour).removeClass("past");
     $(loadingHour).removeClass("present");
