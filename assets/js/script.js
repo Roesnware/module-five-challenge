@@ -45,15 +45,15 @@ $(function () {
 function updateHour() {
     // for comparing
     var currHour = dayjs().format("HH");
-    
+
     // iterate divs
-    for(let i = 9; i <= 17; i++){
+    for (let i = 9; i <= 17; i++) {
         // see if curr hour is over div id
-            // add past 
+        // add past 
         // see if equal 
-            // add present
+        // add present
         // otherwise in future
-        if(currHour > i) {
+        if (currHour > i) {
             $(`#${i}`).addClass("past");
             //console.log("past");
         } else if (currHour == i) {
@@ -64,98 +64,6 @@ function updateHour() {
             //console.log("future");
         }
     }
-}
-
-// func to get stored data
-function getSavedData() {
-
-    // get adn parse local storage data
-    let retrieved = JSON.parse(localStorage.getItem("scheduleForWeek"));
-
-    if(retrieved == null){
-        // if null set empty
-        retrieved = "";
-    }
-
-    //console.log(retrieved);
-
-    // iterate divs 
-    loadingHour.forEach(element => {
-
-        // empty string
-        var returnedData = "";
-
-        // iterate stored data
-        retrieved.forEach(e => {
-
-            // conditional if div id matches stored data
-            if(element.id == e.id){
-
-                // set string to stored data
-                returnedData = e.data;
-            }
-        }) 
-        // set stored data to screen 
-        $(element).children("textarea").text(returnedData);
-    });
-}
-
-// func to save new data to storage
-function setSavedData() {
-
-    // pull and parse stored data
-    let retrieved = JSON.parse(localStorage.getItem("scheduleForWeek"));
-
-    // console.log(retrieved);
-
-    // declare target buttons parent to see divs
-    let dataParent = $(this).parent();
-
-    // text hook 
-    let data = dataParent.children("textarea").val();
-    // console.log(data);
-
-    // id hook
-    let id = dataParent.attr("id");
-    //console.log(id);
-
-    // object declaration with id and data 
-    var hourlySchedule = {
-        id: id,
-        data: data
-    };
-
-
-    // console.log(retrieved);
-
-    // check if stored data is null
-    if(retrieved == null){
-        // if null set empty
-        retrieved = [];
-    }
-    // console.log(newArr);
-
-    let schedule = retrieved.map(element => {
-        // console.log(id);
-        // console.log(element.id);
-        if(element.id == id) {
-            return hourlySchedule;
-        } else{
-            return element;
-        }
-        
-        // check if ids match  with new input id
-    });
-    
-
-    //console.log(hourlySchedule);
-    // push input to store 
-    schedule.push(hourlySchedule);
-
-    //console.log(schedule);
-
-    // store data in local storage
-    localStorage.setItem("scheduleForWeek", JSON.stringify(schedule));
 }
 
 // func to display curr time 
@@ -200,9 +108,9 @@ function rolloverTimes(num, hours) {
     }
 }
 
-
 // func to initalize app
 function init() {
+
     // reset class stylings
     $(loadingHour).removeClass("past");
     $(loadingHour).removeClass("present");
@@ -211,19 +119,18 @@ function init() {
     // add class styles based on curr hour
     updateHour();
 
-    setSavedData();
     // load saved data
     getSavedData();
 }
 
 // func to get postfix 
-function postfixDay(day){
+function postfixDay(day) {
     // modulus to get remainder 
     // check for 1s etc..
-    if((day % 10) == 1) {
+    if ((day % 10) == 1) {
         currDay.innerText += "st";
         // add st at end
-    } else if((day % 10) == 2) {
+    } else if ((day % 10) == 2) {
         currDay.innerText += "nd";
         // add nd at end
     } else if ((day % 10) == 3) {
@@ -232,4 +139,40 @@ function postfixDay(day){
     } else {
         currDay.innerText += "th";
     }
+}
+
+// func to save data
+function setSavedData() {
+
+    // load stored data 
+    let retrieved = JSON.parse(localStorage.getItem("scheduleForWeek"));
+
+    // this button pressed
+    let dataParent = $(this).parent();
+
+    // for inner text
+    let data = dataParent.children("textarea").val();
+
+    // get parent id
+    let id = dataParent.attr("id");
+
+    // make sure its empty if null
+    if (retrieved == null) {
+        // if null set empty
+        retrieved = [];
+    }
+
+    // store data for each id
+    localStorage.setItem(`${id}`, JSON.stringify(data));
+}
+
+// fucn to get saved data 
+function getSavedData() {
+
+    // iterate divs
+    loadingHour.forEach(element => {
+
+        // set text to data form mem
+        $(element).children("textarea").text(JSON.parse(localStorage.getItem(element.id)));
+    });
 }
